@@ -1,0 +1,87 @@
+span.precursor {
+    border-radius: 3px;
+    padding: 1px 1px;
+    background-color: rgba(253,152,7,0.75);
+    color: white;
+}
+
+span.target {
+    border-radius: 3px;
+    padding: 1px 1px;
+    background-color: rgba(219,64,82,0.75);
+    color: white;
+}
+
+span.operation {
+    border-radius: 3px;
+    padding: 1px 1px;
+    background-color: rgba(27,139,244,0.75);
+    color: white;
+}
+
+span.condition {
+    border-radius: 3px;
+    padding: 1px 1px;
+    background-color: rgba(113,200,18,0.75);
+    color: white;
+}
+
+/*Tabs*/
+.search-tabs-container {
+    width: 85%;
+}
+.search-tabs {
+    border-top-left-radius: 3px;
+    background-color: #f9f9f9;
+    padding: 0px 24px;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.search-tab {
+    color:#586069;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    border-right: 1px solid lightgrey !important;
+    border-bottom: 0px !important;
+    background-color: #fafbfc;
+    padding: 12px !important;
+    font-size: 1.1em;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.search-tab--selected {
+    color: black;
+    box-shadow: 1px 1px 0px white;
+    border-left: 1px solid lightgrey !important;
+    border-right: 1px solid lightgrey !important;
+    border-top: 5px solid #33C3F0 !important;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+/*Extraction output*/
+div.extraction-output{
+    border: 1.5px solid #97A5B9;
+    background-color: white;
+}
+
+/*Labels*/
+label.label-h1{
+    font-size: 17px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+div.footer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #8B99AA;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
