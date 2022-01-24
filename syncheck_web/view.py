@@ -15,7 +15,9 @@ def core_view_html():
                           html.Div([html.Div([], className="one column"),
                                     html.Div([draw_text_input(),
                                               draw_disclaimer(),
-                                              draw_separator("50px"),
+                                              draw_separator("20px"),
+                                              draw_text_stat(),
+                                              draw_separator("10px"),
                                               draw_extraction_labels(),
                                               draw_separator("10px"),
                                               dcc.Loading([html.Div([draw_ner_results(),
@@ -133,6 +135,13 @@ def draw_disclaimer():
                     className="row",
                     style={"font-size": "11pt"})
 
+def draw_text_stat():
+    return html.Div([html.Label("Text statistics",
+                                className="label-h1"),
+                     html.Div(id="text-stat",
+                              style={"font-weight": "bold"})],
+                    className="row")
+
 
 def draw_extraction_labels():
     return html.Div([html.Label("Extraction results",
@@ -183,11 +192,11 @@ def draw_synthesis_graph():
 
 def draw_footer():
     return html.Div([html.Div([html.Div(["Designed by ",
-                                         html.A("Olga Kononova", href="https://olgakononova.com/")]),
+                                         html.A("Olga Kononova", href="https://olgakononova.com/", target="_blank")]),
                                html.Label("SYNthesis Check © 2021 "),
-                               html.Div([html.A("CEDER Research Group", href="http://ceder.berkeley.edu/"),
+                               html.Div([html.A("CEDER Research Group", href="http://ceder.berkeley.edu/", target="_blank"),
                                          " (Lawrence Berkeley National Laboratory, Berkeley, CA, USA)"]),
-                               html.Div([html.A("GENESIS Research Center", href="https://www.stonybrook.edu/genesis/"),
+                               html.Div([html.A("GENESIS Research Center", href="https://www.stonybrook.edu/genesis/", target="_blank"),
                                          " (Stony Brook University, New York, NY, USA)"])],
                               className="nine columns",
                               style={"font-size": "12px"}

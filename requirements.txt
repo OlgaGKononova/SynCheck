@@ -11,3 +11,4 @@ pandas
 flask==1.1.2
 flask-caching
 requests
+syllables

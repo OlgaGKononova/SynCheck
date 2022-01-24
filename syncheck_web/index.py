@@ -46,13 +46,14 @@ cache = Cache(app.server, config={"CACHE_TYPE": "simple"})
      Output("graph_result", "children"),
      Output("export_table_btn", "disabled"),
      Output("export_graph_btn", "disabled"),
-     Output("erase_btn", "disabled"),],
+     Output("erase_btn", "disabled"),
+     Output("text-stat", "children")],
     [Input("extract_btn", "n_clicks")],
     [State("extract_textarea", "value")])
 def extract_synthesis(extract_clicks, text):
     if extract_clicks > 0 and text is not None:
         return el.extract_data(text)
-    return "", "", "", True, True, True
+    return "", "", "", True, True, True, ""
 
 
 @app.callback(

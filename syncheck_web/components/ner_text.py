@@ -31,14 +31,3 @@ def build_paragraph(tokens, labels):
         span_tokens.append(html.Span(token, className=labels[i]))
         span_tokens.append(html.Span(" "))
     return html.Div(span_tokens, className="row")
-
-
-def get_classification_label(classification_results):
-    syntype = max(classification_results, key=lambda key: classification_results[key])
-    if syntype == "something_else":
-        return [html.Label("The paragraph sounds ambiguous. The synthesis type cannot be identified.",
-                           style={"font-weight": "bold"}),
-                html.Br()]
-    return [html.Label("This paragraph sounds as a " + " ".join(syntype.split("_")),
-                       style={"font-weight": "bold"}),
-            html.Br()]
