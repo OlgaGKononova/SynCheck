@@ -6,8 +6,8 @@ from syncheck_web.components.ner_text import get_styled_paragraph
 from syncheck_web.components.synthesis_graph import get_synthesis_graph
 from syncheck_web.components.text_analysis import get_classification_label, get_text_stats
 
-# from syncheck_web.tmpipe_dummy import TMPipeDummy
-# tmpipe = TMPipeDummy()
+#from syncheck_web.tmpipe_dummy import TMPipeDummy
+#tmpipe = TMPipeDummy()
 
 tmpipe_api = os.environ.get("TMPIPE_API", "")
 matbert_api = os.environ.get("MATBERT_API", "")
@@ -42,8 +42,8 @@ def extract_data(text):
     r_out = rq.get(matbert_api+"?paragraph="+q_text).json()
     matbert_results = r_out["scores"]
 
-    # output_data = tmpipe.process_paragraph(text)
-    # matbert_results = {"solid-state": 0.99}
+    output_data = tmpipe.process_paragraph(text)
+    matbert_results = {"solid-state": 0.99}
 
     ner_data = []
     for sentence in output_data:
@@ -70,9 +70,9 @@ def extract_data(text):
     export_graph_btn = graph_layout is None
 
     return ner_layout, \
-           table_layout, \
            graph_layout, \
-           export_table_btn, \
            export_graph_btn, \
            export_graph_btn, \
            text_score+matbert_label
+# table_layout, \
+# export_table_btn, \

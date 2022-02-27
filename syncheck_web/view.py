@@ -21,7 +21,8 @@ def core_view_html():
                                               draw_extraction_labels(),
                                               draw_separator("10px"),
                                               dcc.Loading([html.Div([draw_ner_results(),
-                                                                     draw_table()],
+                                                                     #draw_table()
+                                                                     ],
                                                                     id="extract_result",
                                                                     className="row"),
                                                           draw_separator("30px"),
@@ -156,13 +157,14 @@ def draw_text_stat():
 def draw_extraction_labels():
     return html.Div([html.Label("Extraction results",
                                 className="six columns label-h1"),
-                     html.Label("MOSY data table",
-                                className="five columns label-h1"),
-                     html.Div(html.Button("EXPORT TABLE",
-                                          className="button-primary",
-                                          id="export_table_btn",
-                                          disabled=True),
-                              className="one column")],
+                     # html.Label("MOSY data table",
+                     #            className="five columns label-h1"),
+                     # html.Div(html.Button("EXPORT TABLE",
+                     #                      className="button-primary",
+                     #                      id="export_table_btn",
+                     #                      disabled=True),
+                     #          className="one column")
+                     ],
                     className="row")
 
 
@@ -172,13 +174,14 @@ def draw_separator(size_str):
 
 def draw_ner_results():
     return html.Div(id="ner_result",
-                    className="six columns extraction-output"
+                    className="extraction-output"
+                    #className="ten columns extraction-output"
                     )
 
 
 def draw_table():
     return html.Div(id="mosy_result",
-                    className="six columns extraction-output",
+                    #className="six columns extraction-output",
                     # TODO: this is a placeholder, remove when table extraction is implemented
                     )
 

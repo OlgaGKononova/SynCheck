@@ -42,9 +42,9 @@ cache = Cache(app.server, config={"CACHE_TYPE": "simple"})
 
 @app.callback(
     [Output("ner_result", "children"),
-     Output("mosy_result", "children"),
+     #Output("mosy_result", "children"),
      Output("graph_result", "children"),
-     Output("export_table_btn", "disabled"),
+     #Output("export_table_btn", "disabled"),
      Output("export_graph_btn", "disabled"),
      Output("erase_btn", "disabled"),
      Output("text-stat", "children")],
@@ -53,7 +53,7 @@ cache = Cache(app.server, config={"CACHE_TYPE": "simple"})
 def extract_synthesis(extract_clicks, text):
     if extract_clicks > 0 and text is not None:
         return el.extract_data(text)
-    return "", "", "", True, True, True, ""
+    return "", "", True, True, ""
 
 
 @app.callback(
