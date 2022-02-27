@@ -44,20 +44,23 @@ def get_text_stats(output_data):
     sents_num = len(output_data)
     words_num = len([t for sent in output_data for t in sent["tokens"]])
     actions_num = len([op for sent in output_data for op in sent["operations"]])
-    sent_action_ratio = len(output_data)/actions_num if actions_num else "N/A"
-    actions_density = 1/actions_num * sum([1/len(sent["operations"]) for sent in output_data if sent["operations"]]) if actions_num else "N/A"
+    sents_with_actions_num = len([sent for sent in output_data if sent["operations"]])
+    #sent_action_ratio = len(output_data)/actions_num if actions_num else "N/A"
+    #actions_density = 1/actions_num * sum([1/len(sent["operations"]) for sent in output_data if sent["operations"]]) if actions_num else "N/A"
+    actions_density = sents_with_actions_num / actions_num if actions_num != 0 else "N/A"
     paragraph = [[t for t in sent["tokens"]] for sent in output_data]
     fre = FRE(paragraph)
     fkre = FKRE(paragraph)
     return [html.Li("The text contains {} sentences, {} words, and {} synthesis actions.".format(sents_num, words_num, actions_num)),
-            html.Li("The sentence/actions ratio is {} (desired value ~1.0)".format(round(sent_action_ratio, 2))),
-            html.Li("The synthesis language density is {}".format(round(actions_density, 2))),
-            html.Li([html.A("Flesch reading ease",
-                             href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests",
-                             target="_blank"),
-                      " {} (the higher the better)".format(round(fre, 2))]),
-            html.Li([html.A("Flesch–Kincaid grade level",
-                             href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests",
-                             target="_blank"),
-                      " {} (the higher the better)".format(round(fkre, 2))]),
+            #html.Li("The sentence/actions ratio is {} (desired value ~1.0)".format(round(sent_action_ratio, 2))),
+            html.Li(["The synthesis actions density", html.Sup("*"), " is {}".format(round(actions_density, 2))]),
+            html.Li(["Flesch reading ease", html.Sup("**"), " is {}".format(round(fre, 2))]),
+            # html.Li([html.A("Flesch reading ease",
+            #                  href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests",
+            #                  target="_blank"),
+            #           " {} (the larger the better)".format(round(fre, 2))]),
+            # html.Li([html.A("Flesch–Kincaid grade level",
+            #                  href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests",
+            #                  target="_blank"),
+            #           " {} (the higher the better)".format(round(fkre, 2))]),
             html.Br()]

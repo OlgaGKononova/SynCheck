@@ -37,7 +37,9 @@ def core_view_html():
                                     html.Div([], className="one column")],
                                    className="row"),
                           draw_about_text(),
-                          draw_separator("100px"),
+                          draw_separator("10px"),
+                          draw_footnotes_text(),
+                          draw_separator("120px"),
                           draw_footer()
                           ])
     return core_view
@@ -95,6 +97,14 @@ def draw_about_text():
                     className="row",
                     style={"line-height": "170%"}
                     )
+
+def draw_footnotes_text():
+    return html.Div([html.Div(className="one column"),
+                     html.Div([html.Label("[*]Relative ratio of number of sentences with synthesis actions "
+                                          "to total number of synthesis actions. Should be close to 1.0."),
+                               html.Label("[**]Higher score indicates text that is easier to read.")],
+                              className="ten columns"),
+                     html.Div(className="one column")])
 
 
 def draw_text_input():
