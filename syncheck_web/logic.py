@@ -42,8 +42,8 @@ def extract_data(text):
     r_out = rq.get(matbert_api+"?paragraph="+q_text).json()
     matbert_results = r_out["scores"]
 
-    output_data = tmpipe.process_paragraph(text)
-    matbert_results = {"solid-state": 0.99}
+    #output_data = tmpipe.process_paragraph(text)
+    #matbert_results = {"solid-state": 0.99}
 
     ner_data = []
     for sentence in output_data:
