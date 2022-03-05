@@ -4,7 +4,7 @@ import requests as rq
 from syncheck_web.components.mosy_table import mosy_layout
 from syncheck_web.components.ner_text import get_styled_paragraph
 from syncheck_web.components.synthesis_graph import get_synthesis_graph
-from syncheck_web.components.text_analysis import get_classification_label, get_text_stats
+from syncheck_web.components.text_analysis import get_classification_label, get_text_stats, get_missing_attributes
 
 #from syncheck_web.tmpipe_dummy import TMPipeDummy
 #tmpipe = TMPipeDummy()
@@ -33,12 +33,12 @@ def extract_data(text):
     if not tmpipe_api:
         print("No TMpipe API found. Check if the path exist in $TMPIPE_API")
         exit(0)
-
+    
     q_text = __normalize_text(text)
     r_out = rq.get(tmpipe_api+"?paragraph="+q_text).json()
     #print(r_out)
     output_data = r_out["results"]
-
+    
     r_out = rq.get(matbert_api+"?paragraph="+q_text).json()
     matbert_results = r_out["scores"]
 
@@ -66,6 +66,7 @@ def extract_data(text):
 
     synthesis_graph = [op for sent in output_data for op in sent["graph"] if "Start" not in op["op_type"]]
     graph_layout = get_synthesis_graph(synthesis_graph)
+    missing_attributes = get_missing_attributes(synthesis_graph)
     export_table_btn = False
     export_graph_btn = graph_layout is None
 
@@ -73,6 +74,6 @@ def extract_data(text):
            graph_layout, \
            export_graph_btn, \
            export_graph_btn, \
-           text_score+matbert_label
+           text_score+matbert_label+missing_attributes
 # table_layout, \
 # export_table_btn, \
