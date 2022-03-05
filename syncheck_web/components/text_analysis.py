@@ -58,7 +58,7 @@ def get_text_stats(output_data):
 def get_missing_attributes(syn_graph):
     attr_missing = {}
     for op in syn_graph:
-        if op["op_type"] in ["MixingOperation", "HeatingOperation", "QuenchingOperation", "DryingOperation"]:
+        if op["op_type"] in ["Mixing", "Heating", "Cooling"] or any(w in op["op_token"] for w in ["dry", "evaporat"]):
             attr_missing[op["op_token"]] = set()
             if not op["time_values"]:
                 attr_missing[op["op_token"]].add("time")
