@@ -1,5 +1,11 @@
 # SynCheck
 
+## Local run
+
+1. Setup enviroment variables:
+ - `TMPIPE_API` - link to the API service that performs text parsing. Code available at https://github.com/OlgaGKononova/TextMiningPipeline
+ - `MATBERT_API` - link to the API service that performs text classification. Code available at https://github.com/OlgaGKononova/MatBERT_NER
+
 ## Deploying on NERCS:
 
 1. Setup environemnt and make sure you can run `python app.py` without any error.

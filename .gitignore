@@ -114,3 +114,4 @@ venv.bak/
 .mypy_cache/
 
 .syncheck_web/tmpipe_dummy.py
+.syncheck_web/assets/graph_example_new.json
